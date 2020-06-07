@@ -33,7 +33,7 @@ public class LinkedListStack<E> implements Stack<E>{
 
   @Override
   public void push(E e) {
-    linkedList.addFirest(e);
+    linkedList.addFirst(e);
   }
 
   @Override

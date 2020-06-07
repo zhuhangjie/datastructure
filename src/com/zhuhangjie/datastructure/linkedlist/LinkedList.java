@@ -72,9 +72,22 @@ public class LinkedList<E> {
     return size == 0;
   }
 
-  public void addFirest(E e) {
+  public void addFirst(E e) {
     add(0, e);
     size++;
+  }
+
+  public void recursionAddLast(E e) {
+    dummyHead.next = recursionAddLast(dummyHead.next,e);
+  }
+
+  private Node recursionAddLast(Node node, E e) {
+    if (node == null) {
+      size++;
+      return new Node(e);
+    }
+     node.next = recursionAddLast(node.next, e);
+    return node;
   }
 
   //插入操作是针对要插入索引前一个节点进行的
