@@ -2,6 +2,10 @@ package com.zhuhangjie.datastructure.linkedlist;
 
 /**
  * 1.链表是一种真正的动态结构
+ * <p>
+ * 2.特点
+ * 优点：真正的动态
+ * 缺点：与数组相比丧失了随机访问能力，因此不适用于索引有语意
  */
 
 /**
@@ -58,6 +62,7 @@ public class LinkedList<E> {
   private Node dummyHead;
   private int size;
 
+
   public LinkedList() {
     //初始化一个空的Node作为虚拟头节点
     this.dummyHead = new Node(null, null);
@@ -77,8 +82,28 @@ public class LinkedList<E> {
     size++;
   }
 
+  public void removeElement(E e) {
+    dummyHead = removeElement(dummyHead, e);
+  }
+
+  private Node removeElement(Node node, E e) {
+    //如果为空代表递归结束
+    if (node.next == null) {
+      return null;
+    }
+    //如果下一个节点是要被删除的节点
+    if (node.next.e.equals(e)) {
+      Node delNode = node.next;
+      node.next = delNode.next;
+      delNode.next = null;
+    }
+    node.next = removeElement(node.next, e);
+
+    return node;
+  }
+
   public void recursionAddLast(E e) {
-    dummyHead.next = recursionAddLast(dummyHead.next,e);
+    dummyHead.next = recursionAddLast(dummyHead.next, e);
   }
 
   private Node recursionAddLast(Node node, E e) {
@@ -86,7 +111,7 @@ public class LinkedList<E> {
       size++;
       return new Node(e);
     }
-     node.next = recursionAddLast(node.next, e);
+    node.next = recursionAddLast(node.next, e);
     return node;
   }
 
@@ -126,7 +151,7 @@ public class LinkedList<E> {
   }
 
   public E getLast() {
-    return get(size-1);
+    return get(size - 1);
   }
 
   public void set(int index, E e) {
@@ -179,7 +204,7 @@ public class LinkedList<E> {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     //这种写法和上面的while是一样的
-    for (Node cur = dummyHead.next; cur != null;cur = cur.next) {
+    for (Node cur = dummyHead.next; cur != null; cur = cur.next) {
       sb.append(cur.e + "->");
     }
     sb.append("NULL");

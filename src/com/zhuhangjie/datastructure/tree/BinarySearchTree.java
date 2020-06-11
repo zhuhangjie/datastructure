@@ -12,10 +12,8 @@ package com.zhuhangjie.datastructure.tree;
 
 
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.Queue;
 import java.util.Stack;
-import java.util.zip.CRC32;
 
 /**
  * 二、前序，中序和后续的深入理解()
