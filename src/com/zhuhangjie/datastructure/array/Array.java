@@ -74,6 +74,7 @@ package com.zhuhangjie.datastructure.array;
 public class Array<E> {
   //数组的容量capacity=data.length
   private E[] data;
+  //size为下一个要插入元素的位置
   private int size;
 
   public Array(int capacity) {
@@ -215,10 +216,13 @@ public class Array<E> {
     return ret;
   }
 
-
+  /**
+   * 其实这个resize方法贼鸡儿简单，就是创建一个给定容积的数组把原数组的数据循环一个个放进去。
+   * @param newCapacity
+   */
   public void resize(int newCapacity) {
     E[] newData = (E[])new Object[newCapacity];
-    //这里不能用System.arraycopy() 因为这个方法的srcArray如果比destArray容量大的话就会报错。
+    //这里不能用System.arrayCopy() 因为这个方法的srcArray如果比destArray容量大的话就会报错,这里还有可能缩容。
     //因此在缩容的时候会抛异常，所以还是用循环方法来给新数组赋值。
     for (int i = 0; i < size; i++) {
       newData[i] = data[i];
