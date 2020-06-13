@@ -1,4 +1,4 @@
-package com.zhuhangjie.datastructure.tree;
+package com.zhuhangjie.datastructure.tree.bst;
 
 /**
  * 一、特点

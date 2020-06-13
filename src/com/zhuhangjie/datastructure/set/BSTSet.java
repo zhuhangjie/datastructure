@@ -1,6 +1,6 @@
 package com.zhuhangjie.datastructure.set;
 
-import com.zhuhangjie.datastructure.tree.BinarySearchTree;
+import com.zhuhangjie.datastructure.tree.bst.BinarySearchTree;
 
 public class BSTSet <E extends Comparable<E>> implements Set<E>{
 
