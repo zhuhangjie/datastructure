@@ -76,6 +76,14 @@ public class Array<E> {
   private E[] data;
   private int size;
 
+  public Array(E[] arr) {
+    data = (E[])new Object[arr.length];
+    for (int i = 0; i < arr.length; i++) {
+      data[i] = arr[i];
+    }
+    size = arr.length;
+  }
+
   public Array(int capacity) {
     //因为Java不能支持new E[capacity]这种泛型的写法，所以要绕个弯
     data = (E[])new Object[capacity];
@@ -141,8 +149,8 @@ public class Array<E> {
   }
 
   public void set(int index, E e){
-    if (index < 0 || index >= size) {
-      throw new IllegalArgumentException("addLast failed. Require index >=0 且 index <= size");
+    if (index < 0 || index > size) {
+      throw new IllegalArgumentException("addLast failed. Require index >=0 且 index <= size, errorIndex = " + index + ", size = " + size);
     }
     data[index] = e;
   }
@@ -224,6 +232,17 @@ public class Array<E> {
       newData[i] = data[i];
     }
     data = newData;
+  }
+
+  public void swap(int i, int j){
+
+    if (i < 0 || i >= size || j < 0 || j >= size) {
+      throw new IllegalArgumentException("index error");
+    }
+
+    E temp = data[j];
+    data[j] = data[i];
+    data[i] = temp;
   }
 
   @Override
