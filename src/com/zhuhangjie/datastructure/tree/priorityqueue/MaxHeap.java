@@ -26,7 +26,10 @@ public class MaxHeap<E extends Comparable<E>> {
     data = new Array<>();
   }
 
+
   /**
+   * 1.先要找到最后一个非叶子节点的索引，通过查最后一个节点的父节点索引得到
+   * 2.然后逐个向前进行siftDown
    * 由于已经把siftDown完成了，所以有点简单的。
    * @param arr
    */
@@ -128,12 +131,5 @@ public class MaxHeap<E extends Comparable<E>> {
     return ret;
   }
 
-  /**
-   * 1.先要找到最后一个非叶子节点的索引，通过查最后一个节点的父节点索引得到
-   * 2.然后逐个向前进行siftDown
-   */
-  public void heapify() {
-
-  }
 
 }
