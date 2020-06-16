@@ -1,4 +1,4 @@
-package com.zhuhangjie.datastructure.tree;
+package com.zhuhangjie.datastructure.tree.bst;
 
 public class Main {
   public static void main(String[] args) {
