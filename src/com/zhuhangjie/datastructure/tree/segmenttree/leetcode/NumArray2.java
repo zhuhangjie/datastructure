@@ -28,7 +28,7 @@ public class NumArray2 {
 
   public void update(int index, int val) {
     data[index] = val;
-    for (int i = index; index < data.length; i++) {
+    for (int i = index; i < data.length; i++) {
       sums[i + 1] = sums[i] + data[i];
     }
   }

@@ -1,6 +1,5 @@
 package com.zhuhangjie.datastructure.tree.segmenttree;
 
-
 /**
  * 1.线段树不是满二叉树
  * 也不是完全二叉树
@@ -16,6 +15,7 @@ package com.zhuhangjie.datastructure.tree.segmenttree;
  * 为如果n = 5那最后一层就只有1个元素还有7个空元素
  * 所以需要4n空间存储节点
  */
+
 
 /**
  * Created by zhuhangjie 2020/6/17 13:14
@@ -83,8 +83,21 @@ public class SegmentTree<E> {
     }
     this.merger = merger;
     tree = (E[]) new Object[4 * arr.length];
-    //把0到data.length-1里的元素填到树里
-    buildTree(0, 0, data.length - 1);
+    buildSegmentTree(0, 0, data.length - 1);
+  }
+
+  private void buildSegmentTree(int treeIndex, int l, int r) {
+    if (l == r) {
+      tree[treeIndex] = data[l];
+      return;
+    }
+
+    int leftChild = leftChild(treeIndex);
+    int rightChild = rightChild(treeIndex);
+    int mid = l + (r - l) / 2;
+    buildSegmentTree(leftChild, l, mid);
+    buildSegmentTree(rightChild, mid + 1, r);
+    tree[treeIndex] = merger.merge(tree[leftChild], tree[rightChild]);
   }
 
   private void buildTree(int treeIndex, int l, int r) {
