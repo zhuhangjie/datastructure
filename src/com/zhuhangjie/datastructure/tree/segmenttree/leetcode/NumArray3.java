@@ -22,21 +22,22 @@ public class NumArray3 {
   }
 
   public void update(int index, int val) {
+    segmentTree.set(index, val);
   }
 
   public int sumRange(int i, int j) {
     if (segmentTree == null) {
       throw new IllegalArgumentException("数组不能为空");
     }
-    return segmentTree.query(i,j);
+    return segmentTree.query(i, j);
   }
 
 
   public static void main(String[] args) {
-//    int[] nums = {-2, 0, 3, -5, 2, -1};
-//    NumArray3 numArray2 = new NumArray3(nums);
-//    System.out.println(numArray2.sumRange(2, 5));
-    Integer[] arr = new Integer[0];
-    System.out.println(arr);
+    int[] arr = {1, 3, 5};
+    NumArray3 numArray3 = new NumArray3(arr);
+    System.out.println(numArray3.sumRange(0, 2));
+    numArray3.update(1, 2);
+    System.out.println(numArray3.sumRange(0, 2));
   }
 }
