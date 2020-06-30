@@ -1,4 +1,4 @@
-package com.zhuhangjie.datastructure.unionfind;
+package com.zhuhangjie.datastructure.tree.unionfind;
 
 public class UnionFind1 implements UF{
   private int[] id;

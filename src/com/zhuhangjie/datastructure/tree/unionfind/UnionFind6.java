@@ -1,13 +1,16 @@
-package com.zhuhangjie.datastructure.unionfind;
+package com.zhuhangjie.datastructure.tree.unionfind;
 
-public class UnionFind2 implements UF {
+public class UnionFind6 implements UF {
 
   private int[] parent;
+  private int[] rank;
 
-  public UnionFind2(int size) {
+  public UnionFind6(int size) {
     parent = new int[size];
+    rank = new int[size];
     for (int i = 0; i < parent.length; i++) {
       parent[i] = i;
+      rank[i] = 1;
     }
   }
 
@@ -16,15 +19,17 @@ public class UnionFind2 implements UF {
     return parent.length;
   }
 
+  //第二版路径压缩使用递归
   private int findRoot(int q) {
     if (q < 0 || q >= parent.length) {
       throw new IllegalArgumentException("index q can't smaller than 0 or bigger than id.length");
     }
     //当自己的父节点不是自己说明还没到根节点
-    while (q != parent[q]) {
-      q = parent[q];
+    if (q != parent[q]) {
+      //第一版路径压缩
+      parent[q] = findRoot(parent[q]);
     }
-    return q;
+    return parent[q];
   }
 
   //时间复杂度O(1)
@@ -42,7 +47,13 @@ public class UnionFind2 implements UF {
     if (pRoot == qRoot) {
       return;
     }
-    //把所有pID改成qID，或者反过来也是一样的
-    parent[pRoot] = qRoot;
+    if (rank[pRoot] < rank[qRoot]) {
+      parent[pRoot] = qRoot;
+    } else{
+      parent[qRoot] = pRoot;
+      if (rank[qRoot] == rank[pRoot]) {
+        rank[pRoot] += 1;
+      }
+    }
   }
 }

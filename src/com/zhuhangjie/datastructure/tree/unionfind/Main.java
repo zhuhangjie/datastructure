@@ -1,4 +1,4 @@
-package com.zhuhangjie.datastructure.unionfind;
+package com.zhuhangjie.datastructure.tree.unionfind;
 
 public class Main {
 
