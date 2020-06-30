@@ -1,4 +1,4 @@
-package com.zhuhangjie.datastructure.map;
+package com.zhuhangjie.datastructure;
 
 import java.io.BufferedInputStream;
 import java.io.File;

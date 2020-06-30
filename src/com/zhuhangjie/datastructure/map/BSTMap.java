@@ -47,7 +47,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
         //否则比较递归路径。这里要针对相同的key判断
         if (key.compareTo(node.key) < 0) {
             node.left = add(node.left, key, value);
-        } else if (key.compareTo(node.key) < 0) {
+        } else if (key.compareTo(node.key) > 0) {
             node.right = add(node.right, key, value);
         } else {
             node.value = value;
